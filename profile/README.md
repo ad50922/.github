@@ -2,7 +2,7 @@
 
 This Organization stores the entire code base for the [Thruster Remaining Useful Life](https://www.kongsberg.com/maritime/services/kongsberg-remote-services/thruster-remaining-useful-life/) (RUL) project developed within Kongsberg. 
 
-The Kongsberg backend team developed many independent repositories being part of the RUL product for: 
+The Kongsberg backend team developed many independent libraries being part of the RUL product for: 
 * data acquisition ([Baumer-Beckhoff DAQ system](https://github.com/Kongsberg-Predictive-Maintenance/beckhoff-data-acquisition) for torque and rpm measurements),
 * signals processing ([error detection](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter), [Kalman filtering](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter)),
 * [cycle counting](https://github.com/Kongsberg-Predictive-Maintenance/cycle-counter) from time-series load signals,
