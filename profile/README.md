@@ -1,7 +1,15 @@
-## Hi there 👋
+## Remaining Useful Life - Predictive Maintenance
+
+This Organization stores the entire code base for the [Thruster Remaining Useful Life](https://www.kongsberg.com/maritime/services/kongsberg-remote-services/thruster-remaining-useful-life/) (RUL) project developed within Kongsberg. 
+
+The Kongsberg backend team developed many independent repositories being part of the RUL product for: 
+* data acquisition ([Baumer-Beckhoff DAQ system](https://github.com/Kongsberg-Predictive-Maintenance/beckhoff-data-acquisition) for torque and rpm measurements),
+* signals processing ([error detection](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter), [Kalman filtering](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter)),
+* [cycle counting](https://github.com/Kongsberg-Predictive-Maintenance/cycle-counter) from time-series load signals,
+* mechanical analyses of driveline components ([bearings](https://github.com/Kongsberg-Predictive-Maintenance/bearing), [gears](https://github.com/Kongsberg-Predictive-Maintenance/gears), shafts),
+* mechanical analyses of thruster housing ([bolted joints](https://github.com/Kongsberg-Predictive-Maintenance/bolted-joint), housing itself).
 
 <!--
-
 **Here are some ideas to get you started:**
 
 🙋‍♀️ A short introduction - what is your organization all about?
