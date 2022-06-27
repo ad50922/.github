@@ -4,7 +4,9 @@ This Organization stores the entire code base for the [Thruster Remaining Useful
 
 The Kongsberg backend team developed many independent libraries being part of the RUL product for: 
 * data acquisition ([Baumer-Beckhoff DAQ system](https://github.com/Kongsberg-Predictive-Maintenance/beckhoff-data-acquisition) for torque and rpm measurements),
-* signals processing ([error detection](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter), [Kalman filtering](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter)),
+* analysis of driveline load signals ([error detection](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter), [Kalman filtering](https://github.com/Kongsberg-Predictive-Maintenance/kalman-filter)),
+* analysis of driveline vibrational signals ([automated condition monitoring](https://github.com/Kongsberg-Predictive-Maintenance/automated-condition-monitoring)),
+* [oil data analysis](https://github.com/Kongsberg-Predictive-Maintenance/oil),
 * [cycle counting](https://github.com/Kongsberg-Predictive-Maintenance/cycle-counter) from time-series load signals,
 * mechanical analyses of driveline components ([bearings](https://github.com/Kongsberg-Predictive-Maintenance/bearing), [gears](https://github.com/Kongsberg-Predictive-Maintenance/gears), shafts),
 * mechanical analyses of thruster housing ([bolted joints](https://github.com/Kongsberg-Predictive-Maintenance/bolted-joint), housing itself).
