@@ -1,0 +1,59 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Coverage
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.7"
+    - name: Load private keys to pipeline
+      uses: webfactory/ssh-agent@v0.5.2
+      with:
+        ssh-private-key: |
+          ${{ secrets.MACHINE_USER_PRIVATE_KEY }}
+    - name: Cache dependencies to speed up the workflow
+      uses: actions/cache@v1
+      id:   cache
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements_tests.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r tests/requirements_tests.txt
+        pip install coverage
+    - name: Run coverage test for all files
+      run : |
+        coverage run -m pytest tests
+        coverage report -m
+    - id: files
+      uses: jitterbit/get-changed-files@v1
+    - name: Check which files were changed
+      run: |
+       if [ ${{ steps.changed-files.outputs.any_changed }} == "true" ]
+          then
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+          done
+        else
+          echo "No Python-related file was changed."
+        fi
+    - name: Test coverage level of changed files 
+      run : |
+        if [ ${{ steps.changed-files.outputs.any_changed }} == "true" ]
+          then
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            coverage report --fail-under=85 --include=${file}
+          done
+        else
+          echo "No Python-related file was changed."
+        fi

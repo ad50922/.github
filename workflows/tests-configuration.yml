@@ -1,0 +1,38 @@
+name: Tests
+on: [push]
+jobs:
+  build:
+    name: Tests
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Setup action
+      uses: nschloe/action-cached-lfs-checkout@v1
+
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+
+    - name: Load private keys to pipeline
+      uses: webfactory/ssh-agent@v0.5.2
+      with:
+        ssh-private-key: |
+          ${{ secrets.MACHINE_USER_PRIVATE_KEY }}
+
+    - name: Cache dependencies to speed up the workflow
+      uses: actions/cache@v1
+      id:   cache
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements_tests.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r tests/requirements_tests.txt
+
+    - name: Test with pytest
+      run: |
+        python -m pytest
